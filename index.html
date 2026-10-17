@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>疼痛管理系統</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <main class="auth-card">
+    <div class="brand">
+      <div class="brand-mark">疼</div>
+      <div><h1>疼痛管理系統</h1><p>安全、清楚地完成疼痛評估與追蹤</p></div>
+    </div>
+
+    <div id="configMessage" class="message info hidden"></div>
+    <div class="auth-tabs">
+      <button id="loginTab" class="auth-tab active" type="button">登入系統</button>
+      <button id="registerTab" class="auth-tab" type="button">申請使用者</button>
+    </div>
+
+    <section id="loginPanel">
+      <form id="loginForm">
+        <div class="field"><label for="loginEmail">Email</label><input id="loginEmail" type="email" autocomplete="email" required></div>
+        <div class="field" style="margin-top:14px"><label for="loginPassword">密碼</label><input id="loginPassword" type="password" autocomplete="current-password" required></div>
+        <div id="loginMessage" class="message hidden"></div>
+        <button id="loginButton" class="btn btn-primary" style="width:100%;margin-top:16px" type="submit">登入系統</button>
+      </form>
+    </section>
+
+    <section id="registerPanel" class="hidden">
+      <form id="registerForm">
+        <div class="field"><label for="registerName">使用者名稱</label><input id="registerName" maxlength="80" required></div>
+        <div class="field" style="margin-top:14px"><label for="registerEmail">Email</label><input id="registerEmail" type="email" autocomplete="email" required></div>
+        <div class="field" style="margin-top:14px"><label for="registerPassword">密碼</label><input id="registerPassword" type="password" minlength="8" autocomplete="new-password" required><span class="help">至少 8 碼</span></div>
+        <div class="field" style="margin-top:14px"><label for="registerPassword2">再次輸入密碼</label><input id="registerPassword2" type="password" minlength="8" autocomplete="new-password" required></div>
+        <div id="registerMessage" class="message hidden"></div>
+        <button id="registerButton" class="btn btn-primary" style="width:100%;margin-top:16px" type="submit">申請使用者</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/runtime-config.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/supabase-service.js"></script>
+  <script src="js/data-service.js"></script>
+  <script src="js/auth-service.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>疼痛管理系統｜管理者</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">疼</div><div><h1>疼痛管理系統</h1><p>管理者端</p></div></div>
+    <nav class="nav">
+      <button class="active" data-page="home">管理首頁</button>
+      <button data-page="records">全部紀錄</button>
+      <button data-page="user">單一使用者</button>
+      <button data-page="pending">待處理紀錄</button>
+    </nav>
+    <div class="sidebar-footer"><div class="user-chip"><strong id="profileName">載入中…</strong><span id="profileEmail"></span></div><button id="logoutButton" class="btn btn-ghost" style="width:100%;color:white;border-color:rgba(255,255,255,.25)">登出</button></div>
+  </aside>
+  <main class="main">
+    <div id="globalMessage" class="message hidden"></div>
+    <section data-section="home"><div class="page-head"><div><h2>管理首頁</h2><p>掌握整體疼痛評估、處置與複評狀態。</p></div></div><div id="adminStats" class="grid stats"></div><div class="section-title"><h3>最近紀錄</h3></div><div id="recentRecords"></div></section>
+    <section data-section="records" class="hidden"><div class="page-head"><div><h2>全部紀錄</h2><p>依使用者、狀態與日期快速篩選。</p></div></div><div class="card filters"><div class="field"><label>使用者</label><select id="filterUser"><option value="">全部使用者</option></select></div><div class="field"><label>狀態</label><select id="filterStatus"><option value="">全部狀態</option><option value="pending_intervention">待處置</option><option value="pending_reassessment">待複評</option><option value="completed">已完成</option></select></div><div class="field"><label>開始日期</label><input id="filterStart" type="date"></div><div class="field"><label>結束日期</label><input id="filterEnd" type="date"></div><button id="clearFilters" class="btn btn-secondary">清除</button></div><div id="allRecords"></div></section>
+    <section data-section="user" class="hidden"><div class="page-head"><div><h2>單一使用者</h2><p>查看指定使用者的全部疼痛紀錄與歷史。</p></div></div><div class="card" style="margin-bottom:14px"><div class="field"><label>選擇使用者</label><select id="singleUserSelect"><option value="">請選擇使用者</option></select></div></div><div id="singleUserSummary"></div><div id="singleUserRecords"></div></section>
+    <section data-section="pending" class="hidden"><div class="page-head"><div><h2>待處理紀錄</h2><p>集中處理待處置與待複評項目。</p></div></div><div id="pendingRecords"></div></section>
+  </main>
+</div>
+<div id="modalRoot"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/runtime-config.js"></script><script src="js/config.js"></script><script src="js/common.js"></script><script src="js/supabase-service.js"></script><script src="js/data-service.js"></script><script src="js/auth-service.js"></script><script src="js/admin.js"></script>
+</body></html>

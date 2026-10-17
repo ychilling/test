@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant-TW" data-mode="preview">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>疼痛管理系統｜介面預覽</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">疼</div><div><h1>疼痛管理系統</h1><p>介面預覽</p></div></div>
+    <nav class="nav"><button class="active" data-preview="user">使用者預覽</button><button data-preview="admin">管理者預覽</button></nav>
+    <div class="sidebar-footer"><button id="resetPreview" class="btn btn-ghost" style="width:100%;color:white;border-color:rgba(255,255,255,.25)">重設範例資料</button></div>
+  </aside>
+  <main class="main">
+    <div class="preview-banner">此頁僅供開發者檢視介面，資料只寫入瀏覽器 localStorage，不會呼叫 Supabase 或建立正式帳號。</div>
+    <section id="previewUser">
+      <div class="page-head"><div><h2>使用者介面預覽</h2><p>可實際新增疼痛評估，確認 NRS 與紀錄呈現。</p></div></div>
+      <div id="previewUserStats" class="grid stats"></div>
+      <div class="section-title"><h3>新增疼痛評估</h3></div>
+      <form id="previewAssessmentForm" class="card">
+        <div class="form-grid">
+          <div class="field full"><label>疼痛開始時間</label><input id="pStarted" type="datetime-local" required></div>
+          <div class="field full"><input id="pNrs" type="hidden"><div id="pNrsControl"></div></div>
+          <div class="field"><label>疼痛部位</label><select id="pLocation" required><option value="">請選擇</option><option>頭部</option><option>頸部</option><option>胸部</option><option>腹部</option><option>下背部</option><option>上肢</option><option>下肢</option><option>其他</option></select></div>
+          <div class="field"><label>其他部位</label><input id="pLocationOther"></div>
+          <div class="field full"><label>疼痛性質</label><div class="checkbox-grid"><label class="check-chip"><input type="checkbox" name="pQuality" value="刺痛">刺痛</label><label class="check-chip"><input type="checkbox" name="pQuality" value="抽痛">抽痛</label><label class="check-chip"><input type="checkbox" name="pQuality" value="痠痛">痠痛</label><label class="check-chip"><input type="checkbox" name="pQuality" value="脹痛">脹痛</label><label class="check-chip"><input type="checkbox" name="pQuality" value="灼熱痛">灼熱痛</label></div></div>
+          <div class="field"><label>疼痛頻率</label><select id="pFrequency" required><option>持續性</option><option selected>間歇性</option><option>偶發性</option></select></div>
+          <div class="field"><label>持續時間</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><input id="pDuration" type="number" min="0.1" step="0.1" value="1" required><select id="pDurationUnit"><option>分鐘</option><option selected>小時</option><option>天</option><option>週</option></select></div></div>
+          <div class="field full"><label>備註</label><textarea id="pNotes"></textarea></div>
+        </div><div id="pMessage" class="message hidden"></div><div class="actions"><button class="btn btn-primary" type="submit">送出疼痛評估</button></div>
+      </form>
+      <div class="section-title"><h3>我的紀錄</h3></div><div id="previewOwnRecords"></div>
+    </section>
+    <section id="previewAdmin" class="hidden"><div class="page-head"><div><h2>管理者介面預覽</h2><p>可直接測試處置與複評流程。</p></div></div><div id="previewAdminStats" class="grid stats"></div><div class="section-title"><h3>全部紀錄</h3></div><div id="previewAllRecords"></div></section>
+  </main>
+</div>
+<div id="modalRoot"></div>
+<script src="js/runtime-config.js"></script><script src="js/config.js"></script><script src="js/common.js"></script><script src="js/demo-data.js"></script><script src="js/local-storage-service.js"></script><script src="js/data-service.js"></script><script src="js/auth-service.js"></script><script src="js/preview.js"></script>
+</body></html>

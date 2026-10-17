@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>疼痛管理系統｜使用者</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">疼</div><div><h1>疼痛管理系統</h1><p>使用者端</p></div></div>
+    <nav class="nav">
+      <button class="active" data-page="home">我的首頁</button>
+      <button data-page="assessment">疼痛評估</button>
+      <button data-page="records">我的紀錄</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-chip"><strong id="profileName">載入中…</strong><span id="profileEmail"></span></div>
+      <button id="logoutButton" class="btn btn-ghost" style="width:100%;color:white;border-color:rgba(255,255,255,.25)">登出</button>
+    </div>
+  </aside>
+  <main class="main">
+    <div id="globalMessage" class="message hidden"></div>
+
+    <section data-section="home">
+      <div class="page-head"><div><h2>我的首頁</h2><p>查看疼痛評估與處置進度。</p></div></div>
+      <div id="userStats" class="grid stats"></div>
+      <div class="section-title"><h3>最近紀錄</h3></div>
+      <div id="recentRecords"></div>
+    </section>
+
+    <section data-section="assessment" class="hidden">
+      <div class="page-head"><div><h2>疼痛評估</h2><p>請依目前感受完成評估，送出後由管理者進行後續處置與複評。</p></div></div>
+      <form id="assessmentForm" class="card">
+        <div class="form-grid">
+          <div class="field full"><label>疼痛開始時間</label><input id="painStartedAt" type="datetime-local" required></div>
+          <div class="field full">
+            <input id="nrsValue" type="hidden" required>
+            <div id="nrsControl"></div>
+          </div>
+          <div class="field"><label>疼痛部位</label><select id="location" required><option value="">請選擇</option><option>頭部</option><option>頸部</option><option>胸部</option><option>腹部</option><option>上背部</option><option>下背部</option><option>上肢</option><option>下肢</option><option>其他</option></select></div>
+          <div class="field"><label>其他部位說明</label><input id="locationOther" maxlength="100" placeholder="若選其他，請補充"></div>
+          <div class="field full"><label>疼痛性質（可複選）</label><div class="checkbox-grid">
+            <label class="check-chip"><input type="checkbox" name="quality" value="刺痛">刺痛</label>
+            <label class="check-chip"><input type="checkbox" name="quality" value="抽痛">抽痛</label>
+            <label class="check-chip"><input type="checkbox" name="quality" value="痠痛">痠痛</label>
+            <label class="check-chip"><input type="checkbox" name="quality" value="脹痛">脹痛</label>
+            <label class="check-chip"><input type="checkbox" name="quality" value="灼熱痛">灼熱痛</label>
+            <label class="check-chip"><input type="checkbox" name="quality" value="壓迫痛">壓迫痛</label>
+            <label class="check-chip"><input type="checkbox" name="quality" value="其他">其他</label>
+          </div></div>
+          <div class="field full"><label>其他性質說明</label><input id="qualityOther" maxlength="100"></div>
+          <div class="field"><label>疼痛頻率</label><select id="frequency" required><option value="">請選擇</option><option>持續性</option><option>間歇性</option><option>偶發性</option></select></div>
+          <div class="field"><label>持續時間</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><input id="durationValue" type="number" min="0.1" step="0.1" required><select id="durationUnit" required><option>分鐘</option><option>小時</option><option>天</option><option>週</option></select></div></div>
+          <div class="field full"><label>備註</label><textarea id="notes" maxlength="1000" placeholder="可補充造成疼痛或加劇、緩解的情形"></textarea></div>
+        </div>
+        <div id="assessmentMessage" class="message hidden"></div>
+        <div class="actions"><button id="submitAssessment" class="btn btn-primary" type="submit">送出疼痛評估</button></div>
+      </form>
+    </section>
+
+    <section data-section="records" class="hidden">
+      <div class="page-head"><div><h2>我的紀錄</h2><p>查看原始評估、管理者處置與疼痛複評結果。</p></div></div>
+      <div id="ownRecords"></div>
+    </section>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/runtime-config.js"></script><script src="js/config.js"></script><script src="js/common.js"></script><script src="js/supabase-service.js"></script><script src="js/data-service.js"></script><script src="js/auth-service.js"></script><script src="js/user.js"></script>
+</body>
+</html>
